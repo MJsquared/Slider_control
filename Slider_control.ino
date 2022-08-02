@@ -4,12 +4,11 @@ void setup() {
 
   Wire.begin(); // join i2c bus (address optional for master)
 
-  Serial.begin(9600); // start serial communication at 9600bps
-
+  Serial.begin(115200); // start serial communication at 9600bps
   // move the slicer to the middle
   Wire.beginTransmission(0xE7); // transmit to device (0xE7)
   Wire.write(15);               // register to conrol location
-  Wire.write(127);              // go to the middle
+  Wire.write(129);              // go to the middle
   Wire.endTransmission();       // stop transmitting
 }
 
@@ -24,6 +23,5 @@ void loop() {
     int readpositions = Wire.read(); // read the position and print
     Serial.println(readpositions);
   }
-
   delay(500);
 }
